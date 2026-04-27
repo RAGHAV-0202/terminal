@@ -471,8 +471,8 @@ void CascadiaSettings::_validateAllSchemesExist()
         for (const auto& appearance : std::array{ profile.DefaultAppearance(), profile.UnfocusedAppearance() })
         {
             // GH#9422: Don't clear the color scheme name if it's set to
-            // "_random" - that's a special token that will be resolved
-            // at runtime to a randomly chosen scheme.
+            // "_random". This special token is handled during runtime
+            // resolution to pick a random scheme from available ones.
             if (appearance &&
                 appearance.DarkColorSchemeName() != RandomSchemeToken &&
                 !colorSchemes.HasKey(appearance.DarkColorSchemeName()))
